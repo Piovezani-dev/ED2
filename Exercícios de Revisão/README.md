@@ -14,16 +14,16 @@
   - Funções importantes:
     - Buscar: permite que o usuário busque especificamente um elemento da lista, seja informando ao usuário apenas que o elemento se encontra na lista ou
       o lugar exato onde o elemento se encontra.
-      Inverter: didaticamente interessante de saber fazer, testando habilidades de manipulação de listas no código.
-      Encontrar máximo e mínimo: buscar e comparar valores (elementos) é interessante para estudar a complexidade de códigos.
-      Ordenar: existem diversas maneiras de se ordenar uma lista e esta função é extremamente importante para o desenvolvimento de vários exemplos reais,
+    - Inverter: didaticamente interessante de saber fazer, testando habilidades de manipulação de listas no código.
+    - Encontrar máximo e mínimo: buscar e comparar valores (elementos) é interessante para estudar a complexidade de códigos.
+    - Ordenar: existem diversas maneiras de se ordenar uma lista e esta função é extremamente importante para o desenvolvimento de vários exemplos reais,
       com listas, tabelas, formulários, listas de chamadas, endereços de email, etc.
 
 **Listas Duplamente Ligadas:**
   - Importância: uma lista duplamente ligada é uma estrutura de dados ligada que consiste de um conjunto de registros sequencialmente ligados chamados de nós.
   - Funções importantes:
     - Inserir dados: permitir o usuário inserir elementos na lista é bem vantajoso para o usuário, principalmente se ele conseguir inserir na posição desejada.
-      Buscar elemento: assim como nas listas lineares, encontrar um elemento satisfaz a necessidade do usuário, entretanto encontrar o elemento e entregar sua
+    - Buscar elemento: assim como nas listas lineares, encontrar um elemento satisfaz a necessidade do usuário, entretanto encontrar o elemento e entregar sua
       posição e informar seus nós vizinhos permite que o usuário fique melhor informado e possa ter uma compreensão melhor.
   
 **Pilhas:**
