@@ -1,0 +1,83 @@
+    if ((*root)->numKeys == MAX_KEYS) {
+        // Divide a raiz se estiver cheia
+        BTreeNode *newRoot = createBTreeNode(0);
+        newRoot->children[0] = *root;
+        splitChild(newRoot, 0);
+        insertNonFull(newRoot, key);
+        *root = newRoot;
+    } else {
+        insertNonFull(*root, key);
+    }
+}
+
+// Função para imprimir as palavras em ordem lexicográfica
+void printBTree(BTreeNode *root) {
+    if (!root) {
+        return;
+    }
+
+    for (int i = 0; i < root->numKeys; i++) {
+        if (!root->isLeaf) {
+            printBTree(root->children[i]);
+        }
+        printf("%s\n", root->keys[i]);
+    }
+
+    if (!root->isLeaf) {
+        printBTree(root->children[root->numKeys]);
+    }
+}
+
+// Função para sugerir palavras com base no prefixo
+void suggestWords(BTreeNode *root, const char *prefix, char *buffer, int depth) {
+    if (!root) {
+        return;
+    }
+
+    for (int i = 0; i < root->numKeys; i++) {
+        // Adiciona a palavra ao buffer e verifica o prefixo
+        strcpy(buffer + depth, root->keys[i]);
+        if (strncmp(root->keys[i], prefix, strlen(prefix)) == 0) {
+            printf("%s\n", buffer + depth); // Imprime a sugestão
+        }
+
+        if (!root->isLeaf) {
+            suggestWords(root->children[i], prefix, buffer, depth);
+        }
+    }
+
+    if (!root->isLeaf) {
+        suggestWords(root->children[root->numKeys], prefix, buffer, depth);
+    }
+}
+
+int main() {
+    BTreeNode *root = NULL;
+
+    // Inserção de palavras
+    insertBTree(&root, "carro");
+    insertBTree(&root, "car");
+    insertBTree(&root, "cat");
+    insertBTree(&root, "dog");
+    insertBTree(&root, "cart");
+
+    // Busca de palavras
+    printf("Busca por 'car': %s\n", searchBTree(root, "car") ? "Encontrada" : "Não encontrada");
+    printf("Busca por 'dog': %s\n", searchBTree(root, "dog") ? "Encontrada" : "Não encontrada");
+    printf("Busca por 'bat': %s\n", searchBTree(root, "bat") ? "Encontrada" : "Não encontrada");
+
+    // Exibir todas as palavras
+    printf("\nPalavras na árvore:\n");
+    printBTree(root);
+
+    // Sugestões de palavras com base em um prefixo
+    char prefix[20];
+    printf("\nDigite um prefixo para sugestões: ");
+    scanf("%s", prefix);
+   
+    char buffer[100];  // Buffer para armazenar palavras completas
+    printf("Sugestões para o prefixo '%s':\n", prefix);
+    suggestWords(root, prefix, buffer, 0);
+
+    return 0;
+}
